@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme config_form _self %}
+
+{% block form_label_class -%}
+    col-sm-5
+{%- endblock form_label_class %}
+
+{% block form_group_class -%}
+    col-sm-7
+{%- endblock form_group_class %}
+
+{% block title %}Configuration{% endblock %}
+
+{% block body %}
+    {{ form_start(config_form) }}
+    <div class="page-header">
+        <h2>Configuration</h2>
+    </div>
+    <hr>
+    <div class="card mt-4">
+        <div class="card-block">
+            {{ form_widget(config_form) }}
+        </div>
+        <div class="card-block text-right">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+    </div>
+    {{ form_end(config_form) }}
+{% endblock %}

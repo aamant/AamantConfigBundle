@@ -1,0 +1,44 @@
+parameters:
+    locale: en
+    database_path: :memory:
+    secret: secret
+
+framework:
+    secret:          "%secret%"
+    router:
+        resource: ~
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+#        handler_id:  session.handler.native_file
+        storage_id: session.storage.mock_file
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+    test: ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_sqlite
+        memory:   true
+        charset:  UTF8
+        path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true

@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="aamant_config.config" class="Aamant\ConfigBundle\Service\Config">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="aamant_config.twig.config" class="Aamant\ConfigBundle\Twig\ConfigExtension">
+            <tag name="twig.extension"/>
+            <argument type="service" id="aamant_config.config" />
+        </service>
+
+        <service id="aamant_config.form.config" class="Aamant\ConfigBundle\Form\ConfigType">
+            <argument type="service" id="aamant_config.config" />
+            <tag name="form.type"/>
+        </service>
+    </services>
+</container>
