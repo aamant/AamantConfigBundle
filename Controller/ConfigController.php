@@ -21,6 +21,8 @@ class ConfigController extends Controller
             foreach ($configForm->getData() as $key => $value){
                 $config->set($key, $value);
             }
+
+            return $this->redirectToRoute('aamant_config_admin');
         }
 
         return $this->render('AamantConfigBundle::config/index.html.twig', array(
